@@ -182,21 +182,27 @@ def buscador_de_productos():
         # Si el valor ingresado es type string ejecuta el siguiente código para buscar en las keys nombre y categoría
         if type(buscar_producto) == str:
             buscar_producto = buscar_producto.lower()
+            print(f'\nLa búsqueda "{buscar_producto}" fue encontrada en el/los siguiente/s producto/s:')
             for producto in productos:
                 if producto.get('nombre') == buscar_producto or producto.get('categoria') == buscar_producto:
-                    # print (producto) | Se utilizó para ver que se obtenía la información
+                    # Imprime los productos encontrados
                     print(
-                        f'\nLa búsqueda "{buscar_producto}" fue encontrada en el siguiente producto:\n\tCódigo:\t{producto["codigo"]}\n\tNombre:\t{producto["nombre"].capitalize()}\n\tCategoría: {producto["categoria"].capitalize()}\n\tPrecio: ${producto["precio"]}.\n')
-                    productos_encontrados.append(buscar_producto)
+                        f'\n\tCódigo:\t{producto["codigo"]}\n\tNombre:\t{producto["nombre"].capitalize()}\n\tCategoría: {producto["categoria"].capitalize()}\n\tPrecio: ${producto["precio"]}.\n')
+                    # Suma un elemento a productos_encontrados para que no ejecute el mensaje de error si no encuentra alguno.
+                    productos_encontrados.append(buscar_producto) 
+                    
 
         # Si el valor ingresado es type int ejecuta el siguiente código para buscar en las keys código y precio
         if buscar_producto.isdigit():
             # Pasa el input a type int para buscar cógio o valor del producto
             buscar_producto_int = int(buscar_producto)
+            print(f'\nLa búsqueda "{buscar_producto}" fue encontrada en el/los siguiente/s producto/s:')
             for producto in productos:
                 if producto.get('codigo') == buscar_producto_int or producto.get('precio') == buscar_producto_int:
+                    # Imprime los productos encontrados
                     print(
-                        f'\nLa búsqueda "{buscar_producto}" fue encontrada en el siguiente producto:\n\tCódigo:\t{producto["codigo"]}\n\tNombre:\t{producto["nombre"].capitalize()}\n\tCategoría: {producto["categoria"].capitalize()}\n\tPrecio: ${producto["precio"]}.\n')
+                        f'\n\n\tCódigo:\t{producto["codigo"]}\n\tNombre:\t{producto["nombre"].capitalize()}\n\tCategoría: {producto["categoria"].capitalize()}\n\tPrecio: ${producto["precio"]}.\n')
+                    # Suma un elemento a productos_encontrados para que no ejecute el mensaje de error si no encuentra alguno.
                     productos_encontrados.append(buscar_producto_int)
             
 
